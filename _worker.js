@@ -657,7 +657,8 @@ export default {
 
 		if (host.toLowerCase().includes('notls') || host.toLowerCase().includes('worker') || host.toLowerCase().includes('trycloudflare')) noTLS = 'true';
 		noTLS = env.NOTLS || noTLS;
-		let subConverterUrl = generateFakeInfo(url.href, uuid, host);
+		//let subConverterUrl = generateFakeInfo(url.href, uuid, host);//选择不伪装
+		let subConverterUrl = url.href;
 		if (userAgent.includes('subconverter')) alpn = '';
 		if (!userAgent.includes('subconverter') && MamaJustKilledAMan.some(PutAGunAgainstHisHeadPulledMyTriggerNowHesDead => userAgent.includes(PutAGunAgainstHisHeadPulledMyTriggerNowHesDead)) && MamaJustKilledAMan.length > 0) {
 			const envKey = env.URL302 ? 'URL302' : (env.URL ? 'URL' : null);
@@ -980,7 +981,7 @@ export default {
 			if (协议类型 == atob('VHJvamFu') && (userAgent.includes('surge') || (format === 'surge' && !userAgent.includes('subconverter'))) && !userAgent.includes('cf-workers-sub')) {
 				subConverterContent = surge(subConverterContent, host, path);
 			}
-			subConverterContent = revertFakeInfo(subConverterContent, uuid, host);
+			//subConverterContent = revertFakeInfo(subConverterContent, uuid, host);//选择不伪装
 			return new Response(subConverterContent, {
 				headers: {
 					"Content-Disposition": `attachment; filename*=utf-8''${encodeURIComponent(FileName)}; filename=${FileName}`,
