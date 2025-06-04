@@ -981,7 +981,7 @@ export default {
 			if (协议类型 == atob('VHJvamFu') && (userAgent.includes('surge') || (format === 'surge' && !userAgent.includes('subconverter'))) && !userAgent.includes('cf-workers-sub')) {
 				subConverterContent = surge(subConverterContent, host, path);
 			}
-			//subConverterContent = revertFakeInfo(subConverterContent, uuid, host);//选择不伪装
+			subConverterContent = revertFakeInfo(subConverterContent, uuid, host);//选择不伪装
 			return new Response(subConverterContent, {
 				headers: {
 					"Content-Disposition": `attachment; filename*=utf-8''${encodeURIComponent(FileName)}; filename=${FileName}`,
