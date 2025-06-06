@@ -468,11 +468,9 @@ function getUniqueTimeTag() {
 	const YYYY = now.getFullYear();
 	const MM = (now.getMonth() + 1).toString().padStart(2, '0');
 	const DD = now.getDate().toString().padStart(2, '0');
-	const HH = now.getHours().toString().padStart(2, '0');
-	const mm = now.getMinutes().toString().padStart(2, '0');
-	const timePart = `${YYYY}${MM}${DD}${HH}${mm}`;
-	const randomPart = Math.random().toString(36).substring(2, 6); // 生成 4 位随机码
-	return `_${timePart}_${randomPart}`;
+	const timePart = `${YYYY}${MM}${DD}`; // 只保留年月日
+	const randomPart = Math.random().toString(36).substring(2, 6); // 4位随机码
+	return `_${timePart}${randomPart}`;
 }
 
 export default {
