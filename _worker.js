@@ -487,6 +487,12 @@ function normalizeIPv6(address) {
 	return address;
 }
 
+//添加 Clash 格式修正函数
+function fixClashIPv6(yamlText) {
+	// 仅替换 server: "[IPv6]" => server: IPv6
+	return yamlText.replace(/server:\s*"\[([0-9a-fA-F:]+)\]"/g, 'server: $1')
+	               .replace(/server:\s*\[([0-9a-fA-F:]+)\]/g, 'server: $1');
+}
 
 export default {
 	async fetch(request, env) {
@@ -1013,6 +1019,12 @@ export default {
 				subConverterContent = surge(subConverterContent, host, path);
 			}
 			subConverterContent = revertFakeInfo(subConverterContent, uuid, host);//选择不伪装
+			
+			//这个IF是修复yaml中的IPV6[]的问题
+			if ((format === 'clash' || userAgent.includes('clash')) && subConverterContent.includes('proxies:')) {
+				subConverterContent = fixClashIPv6(subConverterContent);
+			}
+			
 			return new Response(subConverterContent, {
 				headers: {
 					"Content-Disposition": `attachment; filename*=utf-8''${encodeURIComponent(FileName)}; filename=${FileName}`,
