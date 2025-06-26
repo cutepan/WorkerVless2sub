@@ -822,11 +822,11 @@ export default {
 					}
 
 					if (协议类型 == 'VMess') {
-						const addressFinal = normalizeIPv6(address);
+						const address = normalizeIPv6(address); // 确保 IPv6 格式正确
 						const vmessLink = `vmess://${utf8ToBase64(`{"v":"2","ps":"${addressid + getUniqueTimeTag() + EndPS}","add":"${address}","port":"${port}","id":"${uuid}","aid":"${额外ID}","scy":"${加密方式}","net":"ws","type":"${type}","host":"${host}","path":"${path}","tls":"","sni":"","alpn":"${encodeURIComponent(alpn)}","fp":""}`)}`;
 						return vmessLink;
 					} else {
-						const addressFinal = normalizeIPv6(address);
+						const address = normalizeIPv6(address); // 确保 IPv6 格式正确
 						const 维列斯Link = `${atob('dmxlc3M6Ly8=') + uuid}@${address}:${port + atob('P2VuY3J5cHRpb249bm9uZSZzZWN1cml0eT0mdHlwZT0=') + type}&host=${host}&path=${encodeURIComponent(path)}#${encodeURIComponent(addressid + getUniqueTimeTag() + EndPS)}`;
 						return 维列斯Link;
 					}
@@ -923,15 +923,15 @@ export default {
 				}
 
 				if (协议类型 == 'VMess') {
-                                                                    const addressFinal = normalizeIPv6(address);
+					const address = normalizeIPv6(address); // 确保 IPv6 格式正确
 					const vmessLink = `vmess://${utf8ToBase64(`{"v":"2","ps":"${addressid + getUniqueTimeTag() + 节点备注}","add":"${address}","port":"${port}","id":"${uuid}","aid":"${额外ID}","scy":"${加密方式}","net":"ws","type":"${type}","host":"${伪装域名}","path":"${最终路径}","tls":"tls","sni":"${sni}","alpn":"${encodeURIComponent(alpn)}","fp":"","allowInsecure":"1","fragment":"1,40-60,30-50,tlshello"}`)}`;
 					return vmessLink;
 				} else if (协议类型 == atob('VHJvamFu')) {
-					const addressFinal = normalizeIPv6(address);
+					const address = normalizeIPv6(address); // 确保 IPv6 格式正确
 					const 特洛伊Link = `${atob('dHJvamFuOi8v') + uuid}@${address}:${port + atob('P3NlY3VyaXR5PXRscyZzbmk9') + sni}&alpn=${encodeURIComponent(alpn)}&fp=randomized&type=${type}&host=${伪装域名}&path=${encodeURIComponent(最终路径)}&allowInsecure=1&fragment=1,40-60,30-50,tlshello#${encodeURIComponent(addressid + getUniqueTimeTag() + 节点备注)}`;
 					return 特洛伊Link;
 				} else {
-					const addressFinal = normalizeIPv6(address);
+					const address = normalizeIPv6(address); // 确保 IPv6 格式正确
 					const 维列斯Link = `${atob('dmxlc3M6Ly8=') + uuid}@${address}:${port + atob('P2VuY3J5cHRpb249bm9uZSZzZWN1cml0eT10bHMmc25pPQ==') + sni}&alpn=${encodeURIComponent(alpn)}&fp=random&type=${type}&host=${伪装域名}&path=${encodeURIComponent(最终路径) + xhttp}&allowInsecure=1&fragment=1,40-60,30-50,tlshello#${encodeURIComponent(addressid + getUniqueTimeTag() + 节点备注)}`;
 					return 维列斯Link;
 				}
