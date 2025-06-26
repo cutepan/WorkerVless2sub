@@ -353,6 +353,11 @@ function isValidIPv4(address) {
 	return ipv4Regex.test(address);
 }
 
+function isValidIP(addr) {
+	return addr.includes('.') || addr.includes(':'); // IPv4 或 IPv6
+}
+
+
 function 生成动态UUID(密钥) {
 	const 时区偏移 = 8; // 北京时间相对于UTC的时区偏移+8小时
 	const 起始日期 = new Date(2007, 6, 7, 更新时间, 0, 0); // 固定起始日期为2007年7月7日的凌晨3点
@@ -773,7 +778,7 @@ export default {
 					}
 
 					const httpPorts = ["8080", "8880", "2052", "2082", "2086", "2095"];
-					if (!isValidIPv4(address) && port == "-1") {
+					if (!isValidIP(address) && port == "-1") {
 						for (let httpPort of httpPorts) {
 							if (address.includes(httpPort)) {
 								port = httpPort;
@@ -860,7 +865,7 @@ export default {
 					addressid = match[3] || address;
 				}
 
-				if (!isValidIPv4(address) && port == "-1") {
+				if (!isValidIP(address) && port == "-1") {
 					for (let httpsPort of httpsPorts) {
 						if (address.includes(httpsPort)) {
 							port = httpsPort;
