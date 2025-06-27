@@ -784,7 +784,7 @@ export default {
 					}
 
 					const httpPorts = ["8080", "8880", "2052", "2082", "2086", "2095"];
-					if (!isValidIP(address) && port == "-1") {
+					if (!isValidIPv4(address) && port == "-1") {
 						for (let httpPort of httpPorts) {
 							if (address.includes(httpPort)) {
 								port = httpPort;
@@ -871,7 +871,7 @@ export default {
 					addressid = match[3] || address;
 				}
 
-				if (!isValidIP(address) && port == "-1") {
+				if (!isValidIPv4(address) && port == "-1") {
 					for (let httpsPort of httpsPorts) {
 						if (address.includes(httpsPort)) {
 							port = httpsPort;
