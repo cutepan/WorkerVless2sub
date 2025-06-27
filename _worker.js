@@ -1021,9 +1021,9 @@ export default {
 			subConverterContent = revertFakeInfo(subConverterContent, uuid, host);//选择不伪装
 			
 			//这个IF是修复yaml中的IPV6[]的问题
-			// if ((format === 'clash' || userAgent.includes('clash')) && subConverterContent.includes('proxies:')) {
-			// 	subConverterContent = fixClashIPv6(subConverterContent);
-			// }
+			if ((format === 'clash' || userAgent.includes('clash')) && subConverterContent.includes('proxies:')) {
+				subConverterContent = fixClashIPv6(subConverterContent);
+			}
 			
 			return new Response(subConverterContent, {
 				headers: {
